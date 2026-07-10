@@ -1,0 +1,162 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    font-family: 'Inter', sans-serif;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Space Grotesk', sans-serif;
+  }
+
+  body {
+    background-color: #18181B;
+    color: #FFFFFF;
+    overflow-x: hidden;
+    position: relative;
+  }
+
+  /* Grain texture overlay for authenticity */
+  body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' result='noise' /%3E%3C/filter%3E%3Crect width='400' height='400' fill='%23fff' filter='url(%23noiseFilter)' opacity='0.02'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 1;
+    mix-blend-mode: overlay;
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #18181B;
+}
+::-webkit-scrollbar-thumb {
+  background: #27272A;
+  border: 2px solid #18181B;
+  border-radius: 5px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #3F3F46;
+}
+
+/* Custom Neo Brutalist classes */
+.brutal-border {
+  border: 4px solid #000000;
+}
+
+/* Asymmetric border radius for personality */
+.brutal-border-asymmetric {
+  border: 3px solid #000000;
+  border-radius: 12px 24px 8px 20px;
+}
+
+.brutal-shadow {
+  box-shadow: 3px 4px 0px 0px #000000;
+}
+
+.brutal-shadow-lg {
+  box-shadow: 6px 8px 0px 0px #000000;
+}
+
+.brutal-shadow-xl {
+  box-shadow: 8px 12px 0px 0px #000000;
+}
+
+.brutal-shadow-primary {
+  box-shadow: 5px 6px 0px 0px #FFC300;
+}
+
+.brutal-shadow-secondary {
+  box-shadow: 4px 5px 0px 0px #FF6B35;
+}
+
+/* Personality: offset elements */
+.offset-up {
+  transform: translateY(-8px);
+}
+
+.
+
+/* Section-specific backgrounds for personality */
+.section-bg-warm {
+  background: linear-gradient(135deg, rgba(255, 195, 0, 0.02) 0%, rgba(255, 107, 53, 0.02) 100%);
+}
+
+.section-bg-accent {
+  background: linear-gradient(to bottom, rgba(255, 195, 0, 0.03), rgba(255, 107, 53, 0.01));
+}offset-left {
+  transform: translateX(-6px);
+}
+
+.offset-right {
+  transform: translateX(4px);
+}
+
+/* Background grid styling - very subtle */
+.bg-grid-pattern {
+  background-size: 60px 60px;
+  background-image: 
+    linear-gradient(to right, rgba(255, 255, 255, 0.01) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.01) 1px, transparent 1px);
+}
+
+.bg-dot-pattern {
+  background-size: 40px 40px;
+  background-image: radial-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+}
+
+/* Floating animation - simple, no rotation */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-12px);
+  }
+}
+
+.animate-float-slow {
+  animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float-reverse {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(8px);
+  }
+}
+
+.animate-float-reverse {
+  animation: float-reverse 7s ease-in-out infinite;
+}
+
+/* Selection */
+::selection {
+  background-color: #FFC300;
+  color: #111111;
+}
+
+/* Reset default root Vite styling */
+#root {
+  width: 100%;
+  max-width: 100%;
+  margin: 0;
+  padding: 0;
+  text-align: left;
+  border-inline: none;
+  min-height: auto;
+  display: block;
+}
