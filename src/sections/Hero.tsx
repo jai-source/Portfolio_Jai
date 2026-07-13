@@ -88,12 +88,6 @@ export const Hero: React.FC = () => {
             >
               Contact Me <FaRegEnvelope className="ml-2 text-sm" />
             </MagneticButton>
-            <MagneticButton 
-              href="mailto:jairatna54@gmail.com?subject=Resume%20Request"
-              className="bg-portfolio-secondary text-portfolio-text border-black hover:bg-portfolio-primary hover:text-white"
-            >
-              Request Resume <HiOutlineDocumentDownload className="ml-2 text-xl" />
-            </MagneticButton>
           </motion.div>
 
           {/* Social Links */}

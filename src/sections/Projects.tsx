@@ -55,7 +55,7 @@ export const Projects: React.FC = () => {
     },
     {
       id: 'percepta',
-      title: 'Percepta',
+      title: 'Percepta (In progress)',
       category: 'ai',
       tags: ['Python', 'OpenCV', 'MediaPipe', 'Computer Vision', 'Accessibility'],
       description: 'Accessibility tool: control your cursor with head movement and click by raising an eyebrow. Uses MediaPipe face landmarks — runs on a regular webcam, no extra hardware.',
@@ -120,7 +120,7 @@ export const Projects: React.FC = () => {
     },
     {
       id: 'thynkridge',
-      title: 'ThynkRidge',
+      title: 'ThynkRidge (In progress)',
       category: 'fullstack',
       tags: ['React', 'TypeScript', 'TailwindCSS', 'AI Agent', 'LocalStorage'],
       description: 'Semester planner that breaks your syllabus into weekly tasks. React frontend, stores progress locally. Built because I kept missing assignment deadlines.',

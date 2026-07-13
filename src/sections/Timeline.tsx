@@ -25,7 +25,7 @@ export const Timeline: React.FC = () => {
       year: "December 2025",
       title: "Bootcamp Instructor",
       company: "MUJ ACM SIGBED Chapter",
-      description: "First time teaching. Ran an 5 day bootcamp on HTML, CSS, and JS. Learned that explaining closures to beginners is harder than writing them.",
+      description: "First time teaching. Ran a 5 day bootcamp on HTML, CSS, and JS. Learned that explaining closures to beginners is harder than writing them.",
       color: "#60A5FA",
       tag: "Teaching"
     },
