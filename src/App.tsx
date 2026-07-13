@@ -1,16 +1,16 @@
-import React, { useState, useEffect } from 'react';
-import { motion, useScroll, useSpring } from 'framer-motion';
+import React, { useEffect, useState } from 'react';
+import { AnimatePresence, motion, useScroll, useSpring } from 'framer-motion';
+import { FaBars, FaGithub, FaLinkedinIn, FaTimes } from 'react-icons/fa';
+import { FiActivity } from 'react-icons/fi';
 import { SpotlightEffect } from './components/SpotlightEffect';
-import { Hero } from './sections/Hero';
+import logoImage from './assets/Logo/Logo2.png';
 import { About } from './sections/About';
+import { Contact } from './sections/Contact';
 import { Experience } from './sections/Experience';
+import { Hero } from './sections/Hero';
 import { Projects } from './sections/Projects';
 import { Skills } from './sections/Skills';
 import { Timeline } from './sections/Timeline';
-import { Contact } from './sections/Contact';
-import { FaGithub, FaLinkedinIn, FaBars, FaTimes } from 'react-icons/fa';
-import { FiActivity } from 'react-icons/fi';
-import logoImage from './assets/Logo/Logo2.png';
 
 const NAV_LINKS = [
   { name: 'Home', href: '#hero', id: 'hero' },
@@ -26,7 +26,6 @@ const App: React.FC = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('hero');
 
-  // Track scroll progress at the top of page
   const { scrollYProgress } = useScroll();
   const scaleX = useSpring(scrollYProgress, {
     stiffness: 100,
@@ -34,11 +33,10 @@ const App: React.FC = () => {
     restDelta: 0.001
   });
 
-  // Intersect observer to highlight active links
   useEffect(() => {
     const handleScroll = () => {
       const scrollPos = window.scrollY + 200;
-      
+
       for (const link of NAV_LINKS) {
         const el = document.getElementById(link.id);
         if (el) {
@@ -57,40 +55,47 @@ const App: React.FC = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  useEffect(() => {
+    const originalOverflow = document.body.style.overflow;
+
+    if (menuOpen) {
+      document.body.style.overflow = 'hidden';
+    }
+
+    return () => {
+      document.body.style.overflow = originalOverflow;
+    };
+  }, [menuOpen]);
+
   return (
-    <div className="relative bg-[#18181B] text-white min-h-screen selection:bg-portfolio-primary selection:text-white">
-      {/* 60fps Spotlight Effect */}
+    <div className="relative min-h-screen bg-[#18181B] text-white selection:bg-portfolio-primary selection:text-white">
       <SpotlightEffect />
 
-      {/* Scroll Progress Bar */}
-      <motion.div 
-        className="fixed top-0 left-0 right-0 h-1.5 bg-portfolio-primary z-50 origin-[0%]"
+      <motion.div
+        className="fixed left-0 right-0 top-0 z-50 h-1.5 origin-[0%] bg-portfolio-primary"
         style={{ scaleX }}
       />
 
-      {/* Navigation Header */}
-      <header className="fixed top-4 inset-x-4 z-40 max-w-7xl mx-auto flex items-center justify-between px-6 py-3 bg-[#1C1C1F]/90 backdrop-blur-md border-4 border-black rounded-brutal shadow-brutal transition-all duration-200">
-        {/* Logo / Title */}
-        <a href="#hero" className="font-grotesk font-black text-xl tracking-tighter flex items-center gap-1.5 hover:text-portfolio-secondary">
+      <header className="fixed inset-x-3 top-3 z-50 mx-auto flex max-w-7xl items-center justify-between rounded-brutal border-4 border-black bg-[#1C1C1F]/90 px-4 py-2.5 shadow-brutal backdrop-blur-md transition-all duration-200 sm:inset-x-4 sm:top-4 sm:px-6 sm:py-3">
+        <a href="#hero" className="flex items-center gap-2 font-grotesk text-base font-black tracking-tight hover:text-portfolio-secondary sm:text-xl">
           <img
             src={logoImage}
             alt="Jai Ratna logo"
-            className="w-5 h-5 inline-block rounded-sm object-cover"
+            className="inline-block h-5 w-5 rounded-sm object-cover"
           />
           JAI RATNA
         </a>
 
-        {/* Desktop Menu */}
-        <nav className="hidden lg:flex items-center gap-1">
+        <nav className="hidden items-center gap-1.5 lg:flex">
           {NAV_LINKS.map((link) => (
             <a
               key={link.href}
               href={link.href}
               className={`
-                px-3 py-1.5 font-grotesk font-extrabold text-xs uppercase tracking-wider rounded-md transition-all duration-150 select-none
-                ${activeSection === link.id 
-                  ? 'bg-portfolio-primary text-white border-2 border-black brutal-shadow translate-y-[-1px]' 
-                  : 'text-stone-300 hover:text-white hover:bg-zinc-800'
+                rounded-md px-3 py-1.5 font-grotesk text-xs font-extrabold uppercase tracking-wider transition-all duration-150 select-none
+                ${activeSection === link.id
+                  ? 'bg-portfolio-primary text-white border-2 border-black brutal-shadow translate-y-[-1px]'
+                  : 'text-stone-300 hover:bg-zinc-800 hover:text-white'
                 }
               `}
               style={{
@@ -102,66 +107,83 @@ const App: React.FC = () => {
           ))}
         </nav>
 
-        {/* Right Nav CTA (Desktop) */}
-        <div className="hidden lg:flex items-center gap-3">
+        <div className="hidden items-center gap-3 lg:flex">
           <a
             href="#contact"
-            className="px-4 py-1.5 font-grotesk font-extrabold text-xs uppercase tracking-wider border-2 border-black bg-portfolio-card text-portfolio-text rounded hover:bg-portfolio-primary hover:text-white transition-colors duration-150 brutal-shadow"
+            className="rounded border-2 border-black bg-portfolio-card px-4 py-1.5 font-grotesk text-xs font-extrabold uppercase tracking-wider text-portfolio-text transition-colors duration-150 hover:bg-portfolio-primary hover:text-white brutal-shadow"
             style={{ boxShadow: '2.5px 2.5px 0px 0px #000000' }}
           >
             Hire Me
           </a>
         </div>
 
-        {/* Hamburger Menu Toggle (Mobile) */}
-        <button 
-          onClick={() => setMenuOpen(!menuOpen)}
-          className="lg:hidden w-10 h-10 flex items-center justify-center border-2 border-black bg-portfolio-card text-portfolio-text rounded brutal-shadow active:translate-y-0.5"
+        <button
+          onClick={() => setMenuOpen((open) => !open)}
+          className="flex h-10 w-10 items-center justify-center rounded border-2 border-black bg-portfolio-card text-portfolio-text brutal-shadow active:translate-y-0.5 lg:hidden"
           style={{ boxShadow: '2px 2px 0px 0px #000000' }}
+          aria-expanded={menuOpen}
+          aria-label={menuOpen ? 'Close navigation menu' : 'Open navigation menu'}
         >
           {menuOpen ? <FaTimes className="text-lg" /> : <FaBars className="text-lg" />}
         </button>
       </header>
 
-      {/* Mobile Drawer Menu */}
-      <motion.div
-        initial={{ opacity: 0, y: -20 }}
-        animate={{ opacity: menuOpen ? 1 : 0, y: menuOpen ? 0 : -20 }}
-        transition={{ type: 'spring', stiffness: 200, damping: 20 }}
-        className={`fixed inset-x-4 top-20 z-40 bg-[#1C1C1F] border-4 border-black rounded-brutal shadow-brutal-lg p-6 lg:hidden ${menuOpen ? 'block' : 'pointer-events-none'}`}
-      >
-        <nav className="flex flex-col gap-3 text-left">
-          {NAV_LINKS.map((link) => (
-            <a
-              key={link.href}
-              href={link.href}
+      <AnimatePresence>
+        {menuOpen && (
+          <>
+            <motion.button
+              key="mobile-nav-backdrop"
+              type="button"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
               onClick={() => setMenuOpen(false)}
-              className={`
-                px-4 py-2.5 font-grotesk font-bold text-sm uppercase tracking-wider rounded-md border-2 border-transparent transition-all duration-150
-                ${activeSection === link.id 
-                  ? 'bg-portfolio-primary text-white border-black brutal-shadow' 
-                  : 'text-stone-300 hover:text-white hover:bg-zinc-800'
-                }
-              `}
-              style={{
-                boxShadow: activeSection === link.id ? '3px 3px 0px 0px #000000' : 'none'
-              }}
-            >
-              {link.name}
-            </a>
-          ))}
-          <a
-            href="#contact"
-            onClick={() => setMenuOpen(false)}
-            className="mt-2 text-center py-2.5 font-grotesk font-bold text-sm uppercase tracking-wider border-2 border-black bg-portfolio-card text-portfolio-text rounded brutal-shadow"
-            style={{ boxShadow: '3px 3px 0px 0px #000000' }}
-          >
-            Hire Me
-          </a>
-        </nav>
-      </motion.div>
+              className="fixed inset-0 z-30 bg-black/45 backdrop-blur-[2px] lg:hidden"
+              aria-label="Close navigation menu"
+            />
 
-      {/* Main Sections Container */}
+            <motion.div
+              key="mobile-nav-drawer"
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+              transition={{ type: 'spring', stiffness: 220, damping: 22 }}
+              className="fixed inset-x-3 top-[4.75rem] z-40 rounded-brutal border-4 border-black bg-[#1C1C1F] p-4 shadow-brutal-lg sm:inset-x-4 sm:p-6 lg:hidden"
+            >
+              <nav className="flex flex-col gap-3 text-left">
+                {NAV_LINKS.map((link) => (
+                  <a
+                    key={link.href}
+                    href={link.href}
+                    onClick={() => setMenuOpen(false)}
+                    className={`
+                      rounded-md border-2 border-transparent px-4 py-2.5 font-grotesk text-sm font-bold uppercase tracking-wider transition-all duration-150
+                      ${activeSection === link.id
+                        ? 'border-black bg-portfolio-primary text-white brutal-shadow'
+                        : 'text-stone-300 hover:bg-zinc-800 hover:text-white'
+                      }
+                    `}
+                    style={{
+                      boxShadow: activeSection === link.id ? '3px 3px 0px 0px #000000' : 'none'
+                    }}
+                  >
+                    {link.name}
+                  </a>
+                ))}
+                <a
+                  href="#contact"
+                  onClick={() => setMenuOpen(false)}
+                  className="mt-2 rounded border-2 border-black bg-portfolio-card py-2.5 text-center font-grotesk text-sm font-bold uppercase tracking-wider text-portfolio-text brutal-shadow"
+                  style={{ boxShadow: '3px 3px 0px 0px #000000' }}
+                >
+                  Hire Me
+                </a>
+              </nav>
+            </motion.div>
+          </>
+        )}
+      </AnimatePresence>
+
       <main className="w-full">
         <Hero />
         <About />
@@ -172,40 +194,39 @@ const App: React.FC = () => {
         <Contact />
       </main>
 
-      {/* Footer */}
-      <footer className="border-t-4 border-black bg-[#121214] py-12 px-6 relative z-10 text-stone-500">
-        <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
-          <div className="flex flex-col items-center md:items-start text-center md:text-left gap-1">
-            <span className="font-grotesk font-black text-white tracking-tighter text-lg flex items-center gap-2">
+      <footer className="relative z-10 border-t-4 border-black bg-[#121214] px-6 py-12 text-stone-500">
+        <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-6 md:flex-row">
+          <div className="flex flex-col items-center gap-1 text-center md:items-start md:text-left">
+            <span className="flex items-center gap-2 font-grotesk text-lg font-black tracking-tighter text-white">
               <img
                 src={logoImage}
                 alt="Jai Ratna logo"
-                className="w-6 h-6 rounded-sm object-cover"
+                className="h-6 w-6 rounded-sm object-cover"
               />
               JAI RATNA
             </span>
-            <span className="text-xs font-semibold"> · Delhi NCR</span>
+            <span className="text-xs font-semibold">Delhi NCR</span>
           </div>
 
-          <div className="flex items-center gap-2 border border-zinc-800 bg-[#1C1C1F] px-4 py-1.5 rounded-full text-xs font-bold text-stone-400 font-mono">
+          <div className="flex max-w-full flex-wrap items-center justify-center gap-2 rounded-full border border-zinc-800 bg-[#1C1C1F] px-3 py-2 text-center font-mono text-[11px] font-bold text-stone-400 sm:px-4 sm:py-1.5 sm:text-xs">
             <FiActivity className="text-green-400" />
-            <span>jairatna54@gmail.com</span>
+            <span className="break-all">jairatna54@gmail.com</span>
           </div>
 
           <div className="flex gap-4">
-            <a 
-              href="https://github.com/jai-source" 
-              target="_blank" 
-              rel="noreferrer" 
-              className="text-stone-400 hover:text-white transition-colors duration-150"
+            <a
+              href="https://github.com/jai-source"
+              target="_blank"
+              rel="noreferrer"
+              className="text-stone-400 transition-colors duration-150 hover:text-white"
             >
               <FaGithub className="text-xl" />
             </a>
-            <a 
-              href="https://www.linkedin.com/in/jai-ratna-600522328/" 
-              target="_blank" 
-              rel="noreferrer" 
-              className="text-stone-400 hover:text-white transition-colors duration-150"
+            <a
+              href="https://www.linkedin.com/in/jai-ratna-600522328/"
+              target="_blank"
+              rel="noreferrer"
+              className="text-stone-400 transition-colors duration-150 hover:text-white"
             >
               <FaLinkedinIn className="text-xl" />
             </a>

@@ -16,7 +16,12 @@
     background-color: #18181B;
     color: #FFFFFF;
     overflow-x: hidden;
+    overscroll-behavior-x: none;
     position: relative;
+  }
+
+  section[id] {
+    scroll-margin-top: 7rem;
   }
 
   /* Grain texture overlay for authenticity */

@@ -14,44 +14,44 @@ interface TimelineEvent {
 export const Timeline: React.FC = () => {
   const events: TimelineEvent[] = [
     {
-      year: "2024 - Present",
-      title: "University Education",
-      company: "Manipal University Jaipur",
-      description: "Built a strong foundation in Operating Systems, DBMS, and Object Oriented Programming while beginning to explore software engineering through personal projects.",
-      color: "#3B82F6",
-      tag: "Academic"
+      year: '2024 - Present',
+      title: 'University Education',
+      company: 'Manipal University Jaipur',
+      description: 'Built a strong foundation in Operating Systems, DBMS, and Object Oriented Programming while beginning to explore software engineering through personal projects.',
+      color: '#3B82F6',
+      tag: 'Academic'
     },
     {
-      year: "December 2025",
-      title: "Bootcamp Instructor",
-      company: "MUJ ACM SIGBED Chapter",
-      description: "First time teaching. Ran a 5 day bootcamp on HTML, CSS, and JS. Learned that explaining closures to beginners is harder than writing them.",
-      color: "#60A5FA",
-      tag: "Teaching"
+      year: 'December 2025',
+      title: 'Bootcamp Instructor',
+      company: 'MUJ ACM SIGBED Chapter',
+      description: 'First time teaching. Ran a 5 day bootcamp on HTML, CSS, and JS. Learned that explaining closures to beginners is harder than writing them.',
+      color: '#60A5FA',
+      tag: 'Teaching'
     },
     {
-      year: "June 2026 - Present",
-      title: "Lead Developer",
-      company: "HackerRank MUJ",
-      description: "Took over as lead dev for the campus HackerRank chapter. Running contests, reviewing code, and helping juniors ship their first PRs.",
-      color: "#3B82F6",
-      tag: "Leadership"
+      year: 'June 2026 - Present',
+      title: 'Lead Developer',
+      company: 'HackerRank MUJ',
+      description: 'Took over as lead dev for the campus HackerRank chapter. Running contests, reviewing code, and helping juniors ship their first PRs.',
+      color: '#3B82F6',
+      tag: 'Leadership'
     },
     {
-      year: "May - June 2026",
-      title: "Freelance Engineer",
-      company: "Nishva Preschool & Daycare",
-      description: "First paid client work — built a preschool website end-to-end. Learned more about client communication than any course could teach.",
-      color: "#60A5FA",
-      tag: "Freelance"
+      year: 'May - June 2026',
+      title: 'Freelance Engineer',
+      company: 'Nishva Preschool & Daycare',
+      description: 'First paid client work - built a preschool website end-to-end. Learned more about client communication than any course could teach.',
+      color: '#60A5FA',
+      tag: 'Freelance'
     },
     {
-      year: "June 2026 - Present",
-      title: "Software Developer Intern",
-      company: "WITS Innovation Labs",
-      description: "Backend intern at WITS. Writing APIs, fixing Prisma migrations, and getting comfortable with Docker in a real team setting.",
-      color: "#3B82F6",
-      tag: "Internship"
+      year: 'June 2026 - Present',
+      title: 'Software Developer Intern',
+      company: 'WITS Innovation Labs',
+      description: 'Backend intern at WITS. Writing APIs, fixing Prisma migrations, and getting comfortable with Docker in a real team setting.',
+      color: '#3B82F6',
+      tag: 'Internship'
     },
   ];
 
@@ -67,7 +67,7 @@ export const Timeline: React.FC = () => {
     hidden: { height: 0 },
     visible: {
       height: '100%',
-      transition: { duration: 1.5, ease: "easeInOut" as const }
+      transition: { duration: 1.5, ease: 'easeInOut' as const }
     }
   };
 
@@ -81,48 +81,43 @@ export const Timeline: React.FC = () => {
   };
 
   return (
-    <section id="timeline" className="relative py-24 px-4 md:px-8 xl:px-16 bg-[#1C1C1F] border-t-4 border-black">
-      <div className="absolute inset-0 bg-dot-pattern opacity-30 pointer-events-none" />
+    <section id="timeline" className="relative border-t-4 border-black bg-[#1C1C1F] px-4 py-20 md:px-8 md:py-24 xl:px-16">
+      <div className="pointer-events-none absolute inset-0 bg-dot-pattern opacity-30" />
 
-      <motion.div 
+      <motion.div
         variants={containerVariants}
         initial="hidden"
         whileInView="visible"
-        viewport={{ once: true, margin: "-100px" }}
-        className="w-full max-w-5xl mx-auto relative z-10"
+        viewport={{ once: true, margin: '-100px' }}
+        className="relative z-10 mx-auto w-full max-w-5xl"
       >
-        {/* Header */}
-        <div className="flex flex-col mb-20 text-left md:text-center md:items-center">
-          <span className="text-portfolio-primary font-grotesk font-extrabold text-sm uppercase tracking-widest mb-2 flex items-center gap-2">
-            <span className="h-3 w-3 bg-portfolio-primary inline-block brutal-border animate-pulse" />
+        <div className="mb-14 flex flex-col text-left md:mb-20 md:items-center md:text-center">
+          <span className="mb-2 flex items-center gap-2 font-grotesk text-sm font-extrabold uppercase tracking-widest text-portfolio-primary">
+            <span className="inline-block h-3 w-3 bg-portfolio-primary brutal-border animate-pulse" />
             Timeline
           </span>
-          <h2 className="text-4xl md:text-5xl font-extrabold text-white tracking-tight">
+          <h2 className="text-4xl font-extrabold tracking-tight text-white md:text-5xl">
             How I got <span className="text-portfolio-secondary">here.</span>
           </h2>
         </div>
 
-        {/* Timeline Path */}
         <div className="relative">
-          {/* Vertical Center Line */}
-          <motion.div 
+          <motion.div
             variants={lineVariants}
-            className="absolute left-4 md:left-1/2 top-0 -translate-x-[2px] w-1 bg-black h-full border-l-4 border-black z-0 pointer-events-none"
+            className="pointer-events-none absolute left-3 top-0 z-0 h-full w-1 -translate-x-[2px] border-l-4 border-black bg-black sm:left-4 md:left-1/2"
           />
 
-          {/* Timeline Nodes */}
-          <div className="space-y-16">
+          <div className="space-y-10 md:space-y-16">
             {events.map((event, index) => {
               const isEven = index % 2 === 0;
               return (
-                <motion.div 
+                <motion.div
                   key={index}
                   variants={itemVariants}
-                  className={`flex flex-col md:flex-row relative items-start ${isEven ? 'md:flex-row-reverse' : ''}`}
+                  className={`relative flex flex-col items-start md:flex-row ${isEven ? 'md:flex-row-reverse' : ''}`}
                 >
-                  {/* Timeline circular node marker */}
-                  <div 
-                    className="absolute left-4 md:left-1/2 -translate-x-1/2 w-6 h-6 rounded-full border-4 border-black z-20 flex items-center justify-center bg-portfolio-card"
+                  <div
+                    className="absolute left-3 z-20 flex h-5 w-5 -translate-x-1/2 items-center justify-center rounded-full border-4 border-black bg-portfolio-card sm:left-4 sm:h-6 sm:w-6 md:left-1/2"
                     style={{
                       boxShadow: '2px 2px 0px 0px #000000',
                       top: '12px'
@@ -131,29 +126,27 @@ export const Timeline: React.FC = () => {
                     <span className="h-2.5 w-2.5 rounded-full" style={{ backgroundColor: event.color === '#111111' ? '#3B82F6' : event.color }} />
                   </div>
 
-                  {/* Left / Right Card Container */}
-                  <div className="w-full md:w-1/2 pl-12 md:pl-0 md:px-8">
+                  <div className="w-full pl-10 sm:pl-12 md:w-1/2 md:px-8 md:pl-0">
                     <BrutalistCard
                       hoverRotate={isEven ? -1 : 1}
                       shadowColor={event.color}
-                      className="bg-portfolio-card text-portfolio-text text-left"
+                      className="bg-portfolio-card text-left text-portfolio-text"
                     >
-                      <div className="flex items-center justify-between gap-2 mb-3 border-b-2 border-dashed border-zinc-200 pb-2">
+                      <div className="mb-3 flex flex-col items-start gap-2 border-b-2 border-dashed border-zinc-200 pb-2 sm:flex-row sm:items-center sm:justify-between">
                         <span className="font-mono text-sm font-extrabold text-portfolio-primary">{event.year}</span>
-                        <span className="text-[10px] font-black uppercase tracking-wider bg-[#27272A] text-white px-2 py-0.5 border border-black rounded-sm">
+                        <span className="rounded-sm border border-black bg-[#27272A] px-2 py-0.5 text-[10px] font-black uppercase tracking-wider text-white">
                           {event.tag}
                         </span>
                       </div>
-                      <h3 className="text-xl font-black tracking-tight leading-none mb-1">{event.title}</h3>
-                      <h4 className="text-sm font-bold text-stone-600 mb-4">{event.company}</h4>
-                      <p className="text-sm font-semibold text-stone-700 leading-relaxed">
+                      <h3 className="mb-1 text-lg font-black leading-tight tracking-tight sm:text-xl">{event.title}</h3>
+                      <h4 className="mb-4 text-xs font-bold text-stone-600 sm:text-sm">{event.company}</h4>
+                      <p className="text-sm font-semibold leading-relaxed text-stone-700">
                         {event.description}
                       </p>
                     </BrutalistCard>
                   </div>
 
-                  {/* Empty Spacer Column for Desktop */}
-                  <div className="hidden md:block w-1/2" />
+                  <div className="hidden w-1/2 md:block" />
                 </motion.div>
               );
             })}

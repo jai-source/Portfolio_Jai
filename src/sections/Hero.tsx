@@ -1,8 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { FaChevronRight, FaGithub, FaLinkedinIn, FaRegEnvelope } from 'react-icons/fa';
 import { MagneticButton } from '../components/MagneticButton';
-import { FaGithub, FaLinkedinIn, FaChevronRight, FaRegEnvelope } from 'react-icons/fa';
-
 
 export const Hero: React.FC = () => {
   const containerVariants = {
@@ -32,85 +31,80 @@ export const Hero: React.FC = () => {
   ];
 
   return (
-    <section id="hero" className="relative min-h-[90vh] flex items-center justify-center pt-24 pb-16 px-4 md:px-8 xl:px-16 bg-grid-pattern">
-      {/* Absolute Decorative Grid Elements */}
-      <div className="absolute top-10 right-10 w-24 h-24 border-4 border-dashed border-[#27272A] rounded-full pointer-events-none animate-spin" style={{ animationDuration: '40s' }} />
-      <div className="absolute bottom-10 left-10 w-16 h-16 border-4 border-[#27272A] pointer-events-none rotate-45" />
+    <section id="hero" className="relative flex min-h-[90vh] items-center justify-center overflow-hidden bg-grid-pattern px-4 pb-14 pt-28 sm:px-6 sm:pb-16 sm:pt-32 md:px-8 xl:px-16">
+      <div className="pointer-events-none absolute bottom-8 left-4 h-12 w-12 rotate-45 border-4 border-[#27272A] sm:left-10 sm:h-16 sm:w-16" />
+      <div className="pointer-events-none absolute right-4 top-14 hidden h-20 w-20 rounded-full border-4 border-dashed border-[#27272A] sm:block md:right-10 md:top-10 md:h-24 md:w-24 animate-spin" style={{ animationDuration: '40s' }} />
 
-      <motion.div 
+      <motion.div
         variants={containerVariants}
         initial="hidden"
         animate="visible"
-        className="w-full max-w-7xl grid grid-cols-1 lg:grid-cols-12 gap-12 items-center"
+        className="grid w-full max-w-7xl grid-cols-1 items-center gap-10 lg:grid-cols-12 lg:gap-12"
       >
-        {/* Left Column: Text & Buttons */}
-        <div className="lg:col-span-7 flex flex-col justify-center text-left">
-          {/* Confident Tagline Label */}
-          <motion.div 
+        <div className="flex max-w-3xl flex-col justify-center text-left lg:col-span-7">
+          <motion.div
             variants={itemVariants}
-            className="inline-flex items-center gap-2 bg-[#27272A] border-2 border-black px-4 py-1.5 rounded-full text-sm font-bold tracking-wider uppercase text-portfolio-secondary max-w-fit mb-6 brutal-shadow"
+            className="mb-6 inline-flex max-w-full items-center gap-2 rounded-full border-2 border-black bg-[#27272A] px-3 py-1.5 text-[10px] font-bold uppercase tracking-[0.22em] leading-snug text-portfolio-secondary sm:px-4 sm:text-sm sm:tracking-wider brutal-shadow"
             style={{ boxShadow: '2px 2px 0px 0px #000000' }}
           >
             <span className="flex h-2 w-2 rounded-full bg-portfolio-primary animate-ping" />
             Open to Software Engineering Internships, Freelance & Collaboration
           </motion.div>
 
-          <motion.h1 
+          <motion.h1
             variants={itemVariants}
-            className="text-5xl md:text-7xl font-extrabold tracking-tighter text-white leading-none mb-4"
+            className="mb-5 text-[2.9rem] font-extrabold tracking-tighter leading-[0.92] text-white sm:text-6xl md:text-7xl"
           >
-            I'm <span className="text-portfolio-primary relative inline-block">Jai Ratna<span className="absolute bottom-1 left-0 w-full h-3 bg-portfolio-primary/20 -z-10" /></span>.
+            I'm <span className="relative inline-block text-portfolio-primary">Jai Ratna<span className="absolute bottom-1 left-0 h-3 w-full bg-portfolio-primary/20 -z-10" /></span>.
             <br />
             <span className="text-white">I build software that solves real problems.</span>
           </motion.h1>
 
-          <motion.p 
+          <motion.p
             variants={itemVariants}
-            className="text-lg md:text-xl text-stone-400 font-medium max-w-2xl mb-8 leading-relaxed"
+            className="mb-8 max-w-2xl text-base font-medium leading-relaxed text-stone-400 sm:text-lg md:text-xl"
           >
             Software Engineering student passionate about building scalable applications, intelligent systems, and products people actually enjoy using. From backend APIs and full-stack web apps to computer vision projects like Percepta, I enjoy turning ideas into reliable software.
           </motion.p>
 
-          {/* CTAs */}
-          <motion.div 
+          <motion.div
             variants={itemVariants}
-            className="flex flex-wrap gap-4 items-center mb-10"
+            className="mb-8 flex flex-col items-stretch gap-3 sm:mb-10 sm:flex-row sm:items-center sm:gap-4"
           >
-            <MagneticButton 
-              href="#projects" 
-              className="bg-portfolio-primary text-white border-black hover:bg-portfolio-hover hover:text-white"
+            <MagneticButton
+              href="#projects"
+              className="w-full bg-portfolio-primary text-white border-black hover:bg-portfolio-hover hover:text-white sm:w-auto"
             >
               View Projects <FaChevronRight className="ml-2 text-sm" />
             </MagneticButton>
-            <MagneticButton 
-              href="mailto:jairatna54@gmail.com" 
-              className="bg-portfolio-card text-portfolio-text border-black"
+            <MagneticButton
+              href="mailto:jairatna54@gmail.com"
+              className="w-full bg-portfolio-card text-portfolio-text border-black sm:w-auto"
             >
               Contact Me <FaRegEnvelope className="ml-2 text-sm" />
             </MagneticButton>
           </motion.div>
 
-          {/* Social Links */}
-          <motion.div 
+          <motion.div
             variants={itemVariants}
-            className="flex items-center gap-4"
+            className="flex flex-col items-start gap-3 sm:flex-row sm:items-center sm:gap-4"
           >
-            <span className="text-sm font-bold text-stone-500 uppercase tracking-widest">Find me on</span>
+            <span className="text-xs font-bold uppercase tracking-[0.28em] text-stone-500 sm:text-sm sm:tracking-widest">Find me on</span>
             <div className="flex gap-3">
-              <a 
-                href="https://github.com/jai-source" 
-                target="_blank" 
-                rel="noreferrer" 
-                className="w-10 h-10 flex items-center justify-center border-2 border-black bg-portfolio-card text-portfolio-text rounded-full brutal-shadow hover:bg-portfolio-primary hover:text-white hover:translate-y-[-2px] transition-all duration-200"
+              <a
+                href="https://github.com/jai-source"
+                target="_blank"
+                rel="noreferrer"
+                className="flex h-10 w-10 items-center justify-center rounded-full border-2 border-black bg-portfolio-card text-portfolio-text brutal-shadow transition-all duration-200 hover:-translate-y-[2px] hover:bg-portfolio-primary hover:text-white"
                 style={{ boxShadow: '3px 3px 0px 0px #000000' }}
               >
                 <FaGithub className="text-lg" />
               </a>
-              <a 
-                href="https://www.linkedin.com/in/jai-ratna-600522328/" 
-                target="_blank" 
-                rel="noreferrer" 
-                className="w-10 h-10 flex items-center justify-center border-2 border-black bg-portfolio-card text-portfolio-text rounded-full brutal-shadow hover:bg-portfolio-primary hover:text-white hover:translate-y-[-2px] transition-all duration-200"
+              <a
+                href="https://www.linkedin.com/in/jai-ratna-600522328/"
+                target="_blank"
+                rel="noreferrer"
+                className="flex h-10 w-10 items-center justify-center rounded-full border-2 border-black bg-portfolio-card text-portfolio-text brutal-shadow transition-all duration-200 hover:-translate-y-[2px] hover:bg-portfolio-primary hover:text-white"
                 style={{ boxShadow: '3px 3px 0px 0px #000000' }}
               >
                 <FaLinkedinIn className="text-lg" />
@@ -119,22 +113,39 @@ export const Hero: React.FC = () => {
           </motion.div>
         </div>
 
-        {/* Right Column: Current focus */}
-        <motion.div 
-          variants={itemVariants}
-          className="hidden lg:flex lg:col-span-5 justify-center items-center relative"
-        >
-          <div className="absolute inset-0 bg-[#3B82F6] rounded-brutal brutal-border translate-x-3 translate-y-3 pointer-events-none opacity-20" />
-          
-          <div className="w-full max-w-[440px] border-4 border-black bg-portfolio-card text-portfolio-text rounded-brutal shadow-brutal-xl overflow-hidden relative animate-float-slow">
-            <div className="bg-[#27272A] border-b-4 border-black px-5 py-3">
-              <span className="font-grotesk font-black text-sm text-white uppercase tracking-wider">Right now</span>
+        <motion.div variants={itemVariants} className="lg:hidden">
+          <div className="overflow-hidden rounded-brutal border-4 border-black bg-portfolio-card text-portfolio-text shadow-brutal-lg">
+            <div className="flex items-center justify-between border-b-4 border-black bg-[#27272A] px-4 py-3">
+              <span className="font-grotesk text-sm font-black uppercase tracking-wider text-white">Right now</span>
+              <span className="font-mono text-[10px] font-bold uppercase tracking-[0.2em] text-stone-400">Focus</span>
             </div>
-            
-            <div className="p-5 space-y-4">
+
+            <div className="grid gap-3 p-4 sm:grid-cols-3">
+              {currentFocus.map((item) => (
+                <div key={item.label} className="rounded-[14px] border-2 border-black bg-white p-3 shadow-[2px_2px_0px_0px_#000000]">
+                  <div className="mb-1 text-[10px] font-extrabold uppercase tracking-[0.22em] text-stone-500">{item.label}</div>
+                  <div className="text-sm font-bold leading-snug text-portfolio-text">{item.value}</div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </motion.div>
+
+        <motion.div
+          variants={itemVariants}
+          className="relative hidden items-center justify-center lg:col-span-5 lg:flex"
+        >
+          <div className="pointer-events-none absolute inset-0 translate-x-3 translate-y-3 rounded-brutal border-4 border-black bg-[#3B82F6] opacity-20" />
+
+          <div className="relative w-full max-w-[440px] overflow-hidden rounded-brutal border-4 border-black bg-portfolio-card text-portfolio-text shadow-brutal-xl animate-float-slow">
+            <div className="border-b-4 border-black bg-[#27272A] px-5 py-3">
+              <span className="font-grotesk text-sm font-black uppercase tracking-wider text-white">Right now</span>
+            </div>
+
+            <div className="space-y-4 p-5">
               {currentFocus.map((item) => (
                 <div key={item.label} className="border-b-2 border-dashed border-zinc-300 pb-3 last:border-0 last:pb-0">
-                  <div className="text-[10px] font-extrabold uppercase tracking-widest text-stone-500 mb-1">{item.label}</div>
+                  <div className="mb-1 text-[10px] font-extrabold uppercase tracking-widest text-stone-500">{item.label}</div>
                   <div className="text-sm font-bold leading-snug">{item.value}</div>
                 </div>
               ))}

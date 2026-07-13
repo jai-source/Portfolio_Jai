@@ -18,6 +18,7 @@ export const MagneticButton: React.FC<MagneticButtonProps> = ({
 }) => {
   const ref = useRef<HTMLDivElement>(null);
   const [position, setPosition] = useState({ x: 0, y: 0 });
+  const isFullWidth = className.includes('w-full');
 
   const handleMouseMove = (e: React.MouseEvent) => {
     if (!ref.current) return;
@@ -39,7 +40,7 @@ export const MagneticButton: React.FC<MagneticButtonProps> = ({
 
   const buttonStyle = `
     inline-flex items-center justify-center 
-    px-6 py-3 font-grotesk font-bold text-lg 
+    px-5 py-3 sm:px-6 font-grotesk font-bold text-base sm:text-lg 
     ${hasBg ? '' : 'bg-portfolio-card'} 
     ${hasText ? '' : 'text-portfolio-text'} 
     border-4 border-portfolio-border 
@@ -57,7 +58,7 @@ export const MagneticButton: React.FC<MagneticButtonProps> = ({
       transition={{ type: "spring", stiffness: 150, damping: 15, mass: 0.1 }}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
-      className="inline-block"
+      className={isFullWidth ? 'block w-full' : 'inline-block'}
     >
       {href ? (
         <a href={href} className={buttonStyle} onClick={onClick} download={download} rel="noreferrer" target={href.startsWith('http') ? '_blank' : undefined}>

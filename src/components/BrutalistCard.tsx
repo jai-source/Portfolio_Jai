@@ -39,7 +39,7 @@ export const BrutalistCard: React.FC<BrutalistCardProps> = ({
       className={`
         ${bgClass} text-portfolio-text 
         ${borderClass} border-portfolio-border 
-        ${borderRadiusClass} p-6 
+        ${borderRadiusClass} p-5 sm:p-6 
         relative overflow-hidden
         ${className}
       `}
