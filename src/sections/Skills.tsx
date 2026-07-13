@@ -123,7 +123,7 @@ export const Skills: React.FC = () => {
   };
 
   return (
-    <section id="skills" className="relative overflow-hidden border-t-4 border-black bg-[#141418] px-4 py-20 md:px-8 md:py-24 xl:px-16">
+    <section id="skills" className="relative overflow-hidden border-t-4 border-black bg-[#141418] px-4 py-14 sm:px-6 sm:py-20 md:px-8 md:py-24 xl:px-16">
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_left,_rgba(56,189,248,0.12),_transparent_34%),radial-gradient(circle_at_bottom_right,_rgba(59,130,246,0.10),_transparent_30%),linear-gradient(180deg,_rgba(255,255,255,0.02)_0%,_rgba(0,0,0,0.12)_100%)]" />
       <div className="pointer-events-none absolute -top-24 left-[-6rem] h-80 w-80 rounded-full bg-cyan-400/10 blur-3xl" />
       <div className="pointer-events-none absolute bottom-[-7rem] right-[-5rem] h-96 w-96 rounded-full bg-blue-500/10 blur-3xl" />
@@ -136,17 +136,17 @@ export const Skills: React.FC = () => {
         viewport={{ once: true, margin: '-100px' }}
         className="relative z-10 mx-auto w-full max-w-7xl"
       >
-        <div className="mb-12 flex flex-col text-left md:mb-16">
+        <div className="mb-8 flex flex-col text-left sm:mb-12 md:mb-16">
           <span className="mb-2 flex items-center gap-2 font-grotesk text-sm font-extrabold uppercase tracking-widest text-portfolio-primary">
             <span className="inline-block h-3 w-3 bg-portfolio-primary brutal-border" />
             Skills
           </span>
-          <h2 className="text-4xl font-extrabold tracking-tight text-white md:text-5xl">
+          <h2 className="text-[2rem] font-extrabold leading-tight tracking-tight text-white sm:text-4xl md:text-5xl">
             Tools I <span className="text-portfolio-secondary">use.</span>
           </h2>
         </div>
 
-        <div className="grid grid-cols-1 gap-6 md:grid-cols-2 md:gap-8 lg:grid-cols-6">
+        <div className="grid grid-cols-1 gap-4 min-[400px]:grid-cols-2 md:grid-cols-2 md:gap-8 lg:grid-cols-6">
           {skillCategories.map((category, idx) => (
             <motion.div key={idx} variants={itemVariants} className="h-full lg:col-span-2">
               <BrutalistCard
@@ -154,19 +154,19 @@ export const Skills: React.FC = () => {
                 shadowColor={category.color === '#111111' ? '#000000' : category.color}
                 className="flex h-full flex-col justify-start bg-portfolio-card text-left text-portfolio-text"
               >
-                <h3 className="mb-6 flex items-center justify-between border-b-4 border-black pb-2 font-grotesk text-xl font-black tracking-tight">
+                <h3 className="mb-4 flex items-center justify-between border-b-4 border-black pb-2 font-grotesk text-lg font-black tracking-tight sm:mb-6 sm:text-xl">
                   {category.title}
                   <span className="h-2 w-2 rounded-full" style={{ backgroundColor: category.color }} />
                 </h3>
 
-                <div className="flex flex-wrap gap-2.5">
+                <div className="flex flex-wrap gap-2">
                   {category.skills.map((skill, skillIdx) => (
                     <div
                       key={skillIdx}
-                      className="flex select-none items-center gap-1.5 rounded-md border-2 border-black bg-white px-3 py-1.5 text-xs font-extrabold transition-all duration-150 hover:-translate-y-1 hover:bg-[#3B82F6] hover:text-white brutal-shadow"
+                      className="flex select-none items-center gap-1.5 rounded-md border-2 border-black bg-white px-2.5 py-1 text-[11px] font-extrabold transition-all duration-150 hover:-translate-y-0.5 hover:bg-[#3B82F6] hover:text-white sm:px-3 sm:py-1.5 sm:text-xs brutal-shadow"
                       style={{ boxShadow: '2px 2px 0px 0px #000000' }}
                     >
-                      {skill.icon && <span className="shrink-0 text-sm">{skill.icon}</span>}
+                      {skill.icon && <span className="shrink-0 text-[13px] sm:text-sm">{skill.icon}</span>}
                       {skill.name}
                     </div>
                   ))}

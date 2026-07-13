@@ -76,8 +76,8 @@ const App: React.FC = () => {
         style={{ scaleX }}
       />
 
-      <header className="fixed inset-x-3 top-3 z-50 mx-auto flex max-w-7xl items-center justify-between rounded-brutal border-4 border-black bg-[#1C1C1F]/90 px-4 py-2.5 shadow-brutal backdrop-blur-md transition-all duration-200 sm:inset-x-4 sm:top-4 sm:px-6 sm:py-3">
-        <a href="#hero" className="flex items-center gap-2 font-grotesk text-base font-black tracking-tight hover:text-portfolio-secondary sm:text-xl">
+      <header className="fixed inset-x-2 top-2 z-50 mx-auto flex max-w-7xl items-center justify-between rounded-brutal border-4 border-black bg-[#1C1C1F]/90 px-3 py-2 shadow-brutal backdrop-blur-md transition-all duration-200 sm:inset-x-4 sm:top-4 sm:px-6 sm:py-3">
+        <a href="#hero" className="flex items-center gap-2 font-grotesk text-[15px] font-black tracking-tight hover:text-portfolio-secondary sm:text-xl">
           <img
             src={logoImage}
             alt="Jai Ratna logo"
@@ -119,7 +119,7 @@ const App: React.FC = () => {
 
         <button
           onClick={() => setMenuOpen((open) => !open)}
-          className="flex h-10 w-10 items-center justify-center rounded border-2 border-black bg-portfolio-card text-portfolio-text brutal-shadow active:translate-y-0.5 lg:hidden"
+          className="flex h-11 w-11 items-center justify-center rounded border-2 border-black bg-portfolio-card text-portfolio-text brutal-shadow active:translate-y-0.5 lg:hidden"
           style={{ boxShadow: '2px 2px 0px 0px #000000' }}
           aria-expanded={menuOpen}
           aria-label={menuOpen ? 'Close navigation menu' : 'Open navigation menu'}
@@ -148,16 +148,16 @@ const App: React.FC = () => {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -20 }}
               transition={{ type: 'spring', stiffness: 220, damping: 22 }}
-              className="fixed inset-x-3 top-[4.75rem] z-40 rounded-brutal border-4 border-black bg-[#1C1C1F] p-4 shadow-brutal-lg sm:inset-x-4 sm:p-6 lg:hidden"
+              className="fixed inset-x-2 top-[4.35rem] z-40 rounded-brutal border-4 border-black bg-[#1C1C1F] p-3 shadow-brutal-lg sm:inset-x-4 sm:p-6 lg:hidden"
             >
-              <nav className="flex flex-col gap-3 text-left">
+              <nav className="flex flex-col gap-2 text-left">
                 {NAV_LINKS.map((link) => (
                   <a
                     key={link.href}
                     href={link.href}
                     onClick={() => setMenuOpen(false)}
                     className={`
-                      rounded-md border-2 border-transparent px-4 py-2.5 font-grotesk text-sm font-bold uppercase tracking-wider transition-all duration-150
+                      rounded-md border-2 border-transparent px-4 py-2 font-grotesk text-sm font-bold uppercase tracking-wider transition-all duration-150
                       ${activeSection === link.id
                         ? 'border-black bg-portfolio-primary text-white brutal-shadow'
                         : 'text-stone-300 hover:bg-zinc-800 hover:text-white'
@@ -173,7 +173,7 @@ const App: React.FC = () => {
                 <a
                   href="#contact"
                   onClick={() => setMenuOpen(false)}
-                  className="mt-2 rounded border-2 border-black bg-portfolio-card py-2.5 text-center font-grotesk text-sm font-bold uppercase tracking-wider text-portfolio-text brutal-shadow"
+                  className="mt-1 rounded border-2 border-black bg-portfolio-card py-2.5 text-center font-grotesk text-sm font-bold uppercase tracking-wider text-portfolio-text brutal-shadow"
                   style={{ boxShadow: '3px 3px 0px 0px #000000' }}
                 >
                   Hire Me
@@ -194,7 +194,7 @@ const App: React.FC = () => {
         <Contact />
       </main>
 
-      <footer className="relative z-10 border-t-4 border-black bg-[#121214] px-6 py-12 text-stone-500">
+      <footer className="relative z-10 border-t-4 border-black bg-[#121214] px-4 py-8 text-stone-500 sm:px-6 sm:py-12">
         <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-6 md:flex-row">
           <div className="flex flex-col items-center gap-1 text-center md:items-start md:text-left">
             <span className="flex items-center gap-2 font-grotesk text-lg font-black tracking-tighter text-white">

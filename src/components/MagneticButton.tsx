@@ -40,7 +40,7 @@ export const MagneticButton: React.FC<MagneticButtonProps> = ({
 
   const buttonStyle = `
     inline-flex items-center justify-center 
-    px-5 py-3 sm:px-6 font-grotesk font-bold text-base sm:text-lg 
+    px-4 py-3 sm:px-6 font-grotesk font-bold text-[15px] sm:text-lg 
     ${hasBg ? '' : 'bg-portfolio-card'} 
     ${hasText ? '' : 'text-portfolio-text'} 
     border-4 border-portfolio-border 

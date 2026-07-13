@@ -49,7 +49,7 @@ export const Contact: React.FC = () => {
   };
 
   const inputStyle = `
-    w-full px-4 py-3 bg-white text-black font-semibold
+    w-full bg-white px-3.5 py-2.5 text-black font-semibold sm:px-4 sm:py-3
     border-4 border-black rounded-lg outline-none
     transition-all duration-200
     focus:border-portfolio-primary focus:ring-0
@@ -57,7 +57,7 @@ export const Contact: React.FC = () => {
   `;
 
   return (
-    <section id="contact" className="relative border-t-4 border-black bg-[#1C1C1F] px-4 py-20 md:px-8 md:py-24 xl:px-16">
+    <section id="contact" className="relative border-t-4 border-black bg-[#1C1C1F] px-4 py-14 sm:px-6 sm:py-20 md:px-8 md:py-24 xl:px-16">
       <div className="pointer-events-none absolute inset-0 bg-grid-pattern opacity-10" />
 
       <motion.div
@@ -67,7 +67,7 @@ export const Contact: React.FC = () => {
         viewport={{ once: true, margin: '-100px' }}
         className="relative z-10 mx-auto w-full max-w-7xl"
       >
-        <div className="grid grid-cols-1 items-center gap-10 lg:grid-cols-12 lg:gap-16">
+        <div className="grid grid-cols-1 items-start gap-6 sm:gap-10 lg:grid-cols-12 lg:gap-16">
           <div className="text-left lg:col-span-6">
             <span className="mb-2 flex items-center gap-2 font-grotesk text-sm font-extrabold uppercase tracking-widest text-portfolio-primary">
               <span className="inline-block h-3 w-3 bg-portfolio-primary brutal-border" />
@@ -75,7 +75,7 @@ export const Contact: React.FC = () => {
             </span>
             <motion.h2
               variants={itemVariants}
-              className="mb-6 text-[2.8rem] font-black leading-[0.95] tracking-tight text-white sm:text-5xl md:text-6xl"
+              className="mb-4 text-[2.3rem] font-black leading-[0.95] tracking-tight text-white sm:mb-6 sm:text-5xl md:text-6xl"
             >
               Want to work <br className="hidden md:block" />
               together? <br className="hidden md:block" />
@@ -84,18 +84,18 @@ export const Contact: React.FC = () => {
 
             <motion.p
               variants={itemVariants}
-              className="mb-8 max-w-md text-base font-semibold leading-relaxed text-stone-400 sm:text-lg"
+              className="mb-6 max-w-md text-[15px] font-semibold leading-7 text-stone-400 sm:mb-8 sm:text-lg sm:leading-relaxed"
             >
               Looking for backend internships, freelance web work, or just want to talk about a project idea.
               I reply within a day, usually faster.
             </motion.p>
 
-            <motion.div variants={itemVariants} className="mb-8 space-y-4">
+            <motion.div variants={itemVariants} className="mb-6 space-y-3 sm:mb-8 sm:space-y-4">
               <a
                 href="mailto:jairatna54@gmail.com"
                 className="group flex items-start gap-4 text-white transition-colors duration-150 hover:text-portfolio-primary"
               >
-                <div className="flex h-12 w-12 items-center justify-center rounded-md border-4 border-black bg-portfolio-card text-portfolio-text brutal-shadow transition-all duration-150 group-hover:bg-portfolio-primary group-hover:text-white" style={{ boxShadow: '3px 3px 0px 0px #000000' }}>
+                <div className="flex h-11 w-11 items-center justify-center rounded-md border-4 border-black bg-portfolio-card text-portfolio-text brutal-shadow transition-all duration-150 group-hover:bg-portfolio-primary group-hover:text-white sm:h-12 sm:w-12" style={{ boxShadow: '3px 3px 0px 0px #000000' }}>
                   <FaRegEnvelope className="text-xl" />
                 </div>
                 <div className="min-w-0">
@@ -110,7 +110,7 @@ export const Contact: React.FC = () => {
                 rel="noreferrer"
                 className="group flex items-start gap-4 text-white transition-colors duration-150 hover:text-portfolio-primary"
               >
-                <div className="flex h-12 w-12 items-center justify-center rounded-md border-4 border-black bg-portfolio-card text-portfolio-text brutal-shadow transition-all duration-150 group-hover:bg-portfolio-primary group-hover:text-white" style={{ boxShadow: '3px 3px 0px 0px #000000' }}>
+                <div className="flex h-11 w-11 items-center justify-center rounded-md border-4 border-black bg-portfolio-card text-portfolio-text brutal-shadow transition-all duration-150 group-hover:bg-portfolio-primary group-hover:text-white sm:h-12 sm:w-12" style={{ boxShadow: '3px 3px 0px 0px #000000' }}>
                   <FaLinkedinIn className="text-xl" />
                 </div>
                 <div className="min-w-0">
@@ -120,7 +120,7 @@ export const Contact: React.FC = () => {
               </a>
             </motion.div>
 
-            <motion.div variants={itemVariants} className="flex flex-wrap items-center gap-4 border-t border-zinc-800 pt-4">
+            <motion.div variants={itemVariants} className="flex flex-wrap items-center gap-3 border-t border-zinc-800 pt-3 sm:gap-4 sm:pt-4">
               <a
                 href="https://github.com/jai-source"
                 target="_blank"
@@ -136,7 +136,7 @@ export const Contact: React.FC = () => {
 
           <motion.div
             variants={itemVariants}
-            className="relative overflow-hidden rounded-brutal border-4 border-black bg-portfolio-card p-5 text-left text-portfolio-text shadow-brutal-xl sm:p-8 lg:col-span-6"
+            className="relative overflow-hidden rounded-brutal border-4 border-black bg-portfolio-card p-4 text-left text-portfolio-text shadow-brutal-xl sm:p-8 lg:col-span-6"
           >
             <AnimatePresence>
               {showSuccess && (
@@ -144,7 +144,7 @@ export const Contact: React.FC = () => {
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   exit={{ opacity: 0 }}
-                  className="absolute inset-0 z-20 flex flex-col items-center justify-center bg-white p-5 text-center sm:p-6"
+                  className="absolute inset-0 z-20 flex flex-col items-center justify-center bg-white p-4 text-center sm:p-6"
                 >
                   <FaCheckCircle className="mb-4 text-5xl text-portfolio-primary" />
                   <h3 className="mb-2 text-2xl font-black">Ready to send</h3>
@@ -162,7 +162,7 @@ export const Contact: React.FC = () => {
               )}
             </AnimatePresence>
 
-            <form onSubmit={handleSubmit} className="space-y-6">
+            <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
               <div>
                 <label className="mb-2 block font-grotesk text-xs font-extrabold uppercase tracking-widest text-stone-600">
                   Your Name
@@ -202,13 +202,13 @@ export const Contact: React.FC = () => {
                   value={formData.message}
                   onChange={handleChange}
                   required
-                  rows={4}
+                  rows={3}
                   placeholder="What's on your mind?"
                   className={inputStyle}
                 />
               </div>
 
-              <div className="pt-2">
+              <div className="pt-1 sm:pt-2">
                 <MagneticButton className="w-full bg-[#18181B] text-white border-black hover:bg-portfolio-primary hover:text-white active:translate-y-1">
                   {isSubmitting ? 'Sending...' : (
                     <>

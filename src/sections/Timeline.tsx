@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { BrutalistCard } from '../components/BrutalistCard';
+import { MobileDisclosure } from '../components/MobileDisclosure';
 
 interface TimelineEvent {
   year: string;
@@ -81,7 +82,7 @@ export const Timeline: React.FC = () => {
   };
 
   return (
-    <section id="timeline" className="relative border-t-4 border-black bg-[#1C1C1F] px-4 py-20 md:px-8 md:py-24 xl:px-16">
+    <section id="timeline" className="relative border-t-4 border-black bg-[#1C1C1F] px-4 py-14 sm:px-6 sm:py-20 md:px-8 md:py-24 xl:px-16">
       <div className="pointer-events-none absolute inset-0 bg-dot-pattern opacity-30" />
 
       <motion.div
@@ -91,12 +92,12 @@ export const Timeline: React.FC = () => {
         viewport={{ once: true, margin: '-100px' }}
         className="relative z-10 mx-auto w-full max-w-5xl"
       >
-        <div className="mb-14 flex flex-col text-left md:mb-20 md:items-center md:text-center">
+        <div className="mb-8 flex flex-col text-left sm:mb-12 md:mb-20 md:items-center md:text-center">
           <span className="mb-2 flex items-center gap-2 font-grotesk text-sm font-extrabold uppercase tracking-widest text-portfolio-primary">
             <span className="inline-block h-3 w-3 bg-portfolio-primary brutal-border animate-pulse" />
             Timeline
           </span>
-          <h2 className="text-4xl font-extrabold tracking-tight text-white md:text-5xl">
+          <h2 className="text-[2rem] font-extrabold leading-tight tracking-tight text-white sm:text-4xl md:text-5xl">
             How I got <span className="text-portfolio-secondary">here.</span>
           </h2>
         </div>
@@ -104,10 +105,10 @@ export const Timeline: React.FC = () => {
         <div className="relative">
           <motion.div
             variants={lineVariants}
-            className="pointer-events-none absolute left-3 top-0 z-0 h-full w-1 -translate-x-[2px] border-l-4 border-black bg-black sm:left-4 md:left-1/2"
+            className="pointer-events-none absolute left-2.5 top-0 z-0 h-full w-1 -translate-x-[2px] border-l-4 border-black bg-black sm:left-4 md:left-1/2"
           />
 
-          <div className="space-y-10 md:space-y-16">
+          <div className="space-y-5 sm:space-y-8 md:space-y-16">
             {events.map((event, index) => {
               const isEven = index % 2 === 0;
               return (
@@ -117,32 +118,36 @@ export const Timeline: React.FC = () => {
                   className={`relative flex flex-col items-start md:flex-row ${isEven ? 'md:flex-row-reverse' : ''}`}
                 >
                   <div
-                    className="absolute left-3 z-20 flex h-5 w-5 -translate-x-1/2 items-center justify-center rounded-full border-4 border-black bg-portfolio-card sm:left-4 sm:h-6 sm:w-6 md:left-1/2"
+                    className="absolute left-2.5 z-20 flex h-4 w-4 -translate-x-1/2 items-center justify-center rounded-full border-4 border-black bg-portfolio-card sm:left-4 sm:h-6 sm:w-6 md:left-1/2"
                     style={{
                       boxShadow: '2px 2px 0px 0px #000000',
-                      top: '12px'
+                      top: '10px'
                     }}
                   >
-                    <span className="h-2.5 w-2.5 rounded-full" style={{ backgroundColor: event.color === '#111111' ? '#3B82F6' : event.color }} />
+                    <span className="h-2 w-2 rounded-full sm:h-2.5 sm:w-2.5" style={{ backgroundColor: event.color === '#111111' ? '#3B82F6' : event.color }} />
                   </div>
 
-                  <div className="w-full pl-10 sm:pl-12 md:w-1/2 md:px-8 md:pl-0">
+                  <div className="w-full pl-7 sm:pl-12 md:w-1/2 md:px-8 md:pl-0">
                     <BrutalistCard
                       hoverRotate={isEven ? -1 : 1}
                       shadowColor={event.color}
                       className="bg-portfolio-card text-left text-portfolio-text"
                     >
-                      <div className="mb-3 flex flex-col items-start gap-2 border-b-2 border-dashed border-zinc-200 pb-2 sm:flex-row sm:items-center sm:justify-between">
-                        <span className="font-mono text-sm font-extrabold text-portfolio-primary">{event.year}</span>
-                        <span className="rounded-sm border border-black bg-[#27272A] px-2 py-0.5 text-[10px] font-black uppercase tracking-wider text-white">
+                      <div className="mb-2.5 flex flex-col items-start gap-1.5 border-b-2 border-dashed border-zinc-200 pb-2 sm:mb-3 sm:flex-row sm:items-center sm:justify-between sm:gap-2">
+                        <span className="font-mono text-xs font-extrabold text-portfolio-primary sm:text-sm">{event.year}</span>
+                        <span className="rounded-sm border border-black bg-[#27272A] px-2 py-0.5 text-[9px] font-black uppercase tracking-wider text-white sm:text-[10px]">
                           {event.tag}
                         </span>
                       </div>
-                      <h3 className="mb-1 text-lg font-black leading-tight tracking-tight sm:text-xl">{event.title}</h3>
-                      <h4 className="mb-4 text-xs font-bold text-stone-600 sm:text-sm">{event.company}</h4>
-                      <p className="text-sm font-semibold leading-relaxed text-stone-700">
-                        {event.description}
-                      </p>
+                      <h3 className="text-base font-black leading-tight tracking-tight sm:text-xl">{event.title}</h3>
+                      <MobileDisclosure contentClassName="mt-3">
+                        <div className="space-y-2.5 sm:space-y-4">
+                          <h4 className="text-[11px] font-bold text-stone-600 sm:text-sm">{event.company}</h4>
+                          <p className="text-[13px] font-semibold leading-6 text-stone-700 sm:text-sm sm:leading-relaxed">
+                            {event.description}
+                          </p>
+                        </div>
+                      </MobileDisclosure>
                     </BrutalistCard>
                   </div>
 

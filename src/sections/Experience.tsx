@@ -2,6 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { FiCheckSquare } from 'react-icons/fi';
 import { BrutalistCard } from '../components/BrutalistCard';
+import { MobileDisclosure } from '../components/MobileDisclosure';
 
 interface ExperienceItem {
   role: string;
@@ -91,7 +92,7 @@ export const Experience: React.FC = () => {
   };
 
   return (
-    <section id="experience" className="relative border-t-4 border-black bg-[#18181B] px-4 py-20 md:px-8 md:py-24 xl:px-16">
+    <section id="experience" className="relative border-t-4 border-black bg-[#18181B] px-4 py-14 sm:px-6 sm:py-20 md:px-8 md:py-24 xl:px-16">
       <div className="pointer-events-none absolute inset-0 bg-grid-pattern opacity-10" />
 
       <motion.div
@@ -101,17 +102,17 @@ export const Experience: React.FC = () => {
         viewport={{ once: true, margin: '-100px' }}
         className="relative z-10 mx-auto w-full max-w-5xl"
       >
-        <div className="mb-12 flex flex-col text-left md:mb-16">
+        <div className="mb-8 flex flex-col text-left sm:mb-12 md:mb-16">
           <span className="mb-2 flex items-center gap-2 font-grotesk text-sm font-extrabold uppercase tracking-widest text-portfolio-primary">
             <span className="inline-block h-3 w-3 bg-portfolio-primary brutal-border" />
             Work
           </span>
-          <h2 className="text-4xl font-extrabold tracking-tight text-white md:text-5xl">
+          <h2 className="text-[2rem] font-extrabold leading-tight tracking-tight text-white sm:text-4xl md:text-5xl">
             Where I've <span className="text-portfolio-secondary">worked.</span>
           </h2>
         </div>
 
-        <div className="space-y-8 md:space-y-12">
+        <div className="space-y-6 md:space-y-12">
           {experiences.map((exp, index) => (
             <motion.div key={index} variants={itemVariants} className="relative">
               <div
@@ -122,45 +123,49 @@ export const Experience: React.FC = () => {
               <BrutalistCard
                 hoverRotate={index % 2 === 0 ? 0.8 : -0.8}
                 shadowColor={exp.color === '#F5F5F4' ? '#000000' : exp.color}
-                className="bg-portfolio-card pl-6 text-portfolio-text sm:pl-8"
+                className="bg-portfolio-card pl-5 text-portfolio-text sm:pl-8"
               >
-                <div className="mb-5 flex flex-col justify-between gap-3 border-b-2 border-dashed border-zinc-300 pb-4 md:mb-6 md:flex-row md:items-center">
+                <div className="mb-4 flex flex-col justify-between gap-2 border-b-2 border-dashed border-zinc-300 pb-3 md:mb-6 md:flex-row md:items-center">
                   <div className="text-left">
-                    <span className="mb-1.5 inline-block rounded-sm border border-black bg-[#27272A] px-2 py-0.5 text-xs font-extrabold uppercase tracking-widest text-white brutal-shadow" style={{ boxShadow: '1px 1px 0px 0px #000000' }}>
+                    <span className="mb-1 inline-block rounded-sm border border-black bg-[#27272A] px-2 py-0.5 text-[10px] font-extrabold uppercase tracking-widest text-white brutal-shadow" style={{ boxShadow: '1px 1px 0px 0px #000000' }}>
                       {exp.type}
                     </span>
-                    <h3 className="text-xl font-black leading-tight tracking-tight sm:text-2xl">{exp.role}</h3>
-                    <h4 className="font-grotesk text-base font-bold text-portfolio-primary sm:text-lg">{exp.company}</h4>
+                    <h3 className="text-lg font-black leading-tight tracking-tight sm:text-2xl">{exp.role}</h3>
+                    <h4 className="font-grotesk text-sm font-bold text-portfolio-primary sm:text-lg">{exp.company}</h4>
                   </div>
 
                   <div className="text-left md:text-right">
-                    <span className="rounded-full border-2 border-black bg-[#EAEAEA] px-3 py-1 font-mono text-xs font-bold brutal-shadow sm:text-sm" style={{ boxShadow: '2px 2px 0px 0px #000000' }}>
+                    <span className="rounded-full border-2 border-black bg-[#EAEAEA] px-2.5 py-1 font-mono text-[11px] font-bold brutal-shadow sm:px-3 sm:text-sm" style={{ boxShadow: '2px 2px 0px 0px #000000' }}>
                       {exp.period}
                     </span>
                   </div>
                 </div>
 
-                <ul className="mb-6 space-y-3 text-left">
-                  {exp.points.map((point, idx) => (
-                    <li key={idx} className="flex items-start gap-3">
-                      <FiCheckSquare className="mt-1 shrink-0 text-lg text-portfolio-primary stroke-[3px]" />
-                      <span className="text-sm font-semibold leading-relaxed text-stone-800 md:text-base">
-                        {point}
-                      </span>
-                    </li>
-                  ))}
-                </ul>
+                <MobileDisclosure>
+                  <div className="space-y-4 sm:space-y-6">
+                    <ul className="space-y-2.5 text-left">
+                      {exp.points.map((point, idx) => (
+                        <li key={idx} className="flex items-start gap-2.5">
+                          <FiCheckSquare className="mt-0.5 shrink-0 text-base text-portfolio-primary stroke-[3px] sm:mt-1 sm:text-lg" />
+                          <span className="text-[13.5px] font-semibold leading-6 text-stone-800 sm:text-sm md:text-base">
+                            {point}
+                          </span>
+                        </li>
+                      ))}
+                    </ul>
 
-                <div className="flex flex-wrap gap-2 border-t-2 border-dashed border-zinc-300 pt-4">
-                  {exp.skills.map((skill, idx) => (
-                    <span
-                      key={idx}
-                      className="select-none rounded-md border-2 border-black bg-white px-2.5 py-1 font-grotesk text-xs font-bold transition-colors duration-150 hover:bg-portfolio-primary hover:text-white"
-                    >
-                      {skill}
-                    </span>
-                  ))}
-                </div>
+                    <div className="flex flex-wrap gap-1.5 border-t-2 border-dashed border-zinc-300 pt-3 sm:gap-2 sm:pt-4">
+                      {exp.skills.map((skill, idx) => (
+                        <span
+                          key={idx}
+                          className="select-none rounded-md border-2 border-black bg-white px-2 py-1 font-grotesk text-[11px] font-bold transition-colors duration-150 hover:bg-portfolio-primary hover:text-white sm:px-2.5 sm:text-xs"
+                        >
+                          {skill}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                </MobileDisclosure>
               </BrutalistCard>
             </motion.div>
           ))}
