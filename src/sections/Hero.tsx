@@ -2,7 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { MagneticButton } from '../components/MagneticButton';
 import { FaGithub, FaLinkedinIn, FaChevronRight, FaRegEnvelope } from 'react-icons/fa';
-import { HiOutlineDocumentDownload } from 'react-icons/hi';
+
 
 export const Hero: React.FC = () => {
   const containerVariants = {

@@ -14,7 +14,6 @@ interface BrutalistCardProps {
 export const BrutalistCard: React.FC<BrutalistCardProps> = ({
   children,
   className = '',
-  hoverRotate = 1.5,
   shadowColor = '#000000',
   shadowSize = 'normal',
   asymmetric = false,
