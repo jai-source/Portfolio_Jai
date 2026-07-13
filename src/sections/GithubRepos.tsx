@@ -13,50 +13,49 @@ interface Repository {
   fork: boolean;
 }
 
+const FALLBACK_REPOS: Repository[] = [
+  {
+    name: "devcollab-api",
+    description: "Collaborative project management backend. Express, TypeScript, Prisma, PostgreSQL, Docker, and JWT auth schemas.",
+    html_url: "https://github.com/jai-source",
+    stargazers_count: 14,
+    language: "TypeScript",
+    updated_at: new Date().toISOString(),
+    fork: false
+  },
+  {
+    name: "percepta",
+    description: "Hardware-free accessibility controller converting computer vision face landmarks into operating system mouse actions.",
+    html_url: "https://github.com/jai-source",
+    stargazers_count: 8,
+    language: "Python",
+    updated_at: new Date().toISOString(),
+    fork: false
+  },
+  {
+    name: "convolingo",
+    description: "Low-latency machine translation API and speech-synthesis wrapper using Flask and NLP models.",
+    html_url: "https://github.com/jai-source",
+    stargazers_count: 5,
+    language: "Python",
+    updated_at: new Date().toISOString(),
+    fork: false
+  },
+  {
+    name: "thynkridge-planner",
+    description: "AI-assisted academic scheduler, calendar tracking system, and micro-milestone planner dashboard.",
+    html_url: "https://github.com/jai-source",
+    stargazers_count: 11,
+    language: "TypeScript",
+    updated_at: new Date().toISOString(),
+    fork: false
+  }
+];
+
 export const GithubRepos: React.FC = () => {
   const [repos, setRepos] = useState<Repository[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
-
-  // Fallback repositories data if GitHub API fails or is rate-limited
-  const fallbackRepos: Repository[] = [
-    {
-      name: "devcollab-api",
-      description: "Collaborative project management backend. Express, TypeScript, Prisma, PostgreSQL, Docker, and JWT auth schemas.",
-      html_url: "https://github.com/jai-source",
-      stargazers_count: 14,
-      language: "TypeScript",
-      updated_at: new Date().toISOString(),
-      fork: false
-    },
-    {
-      name: "percepta",
-      description: "Hardware-free accessibility controller converting computer vision face landmarks into operating system mouse actions.",
-      html_url: "https://github.com/jai-source",
-      stargazers_count: 8,
-      language: "Python",
-      updated_at: new Date().toISOString(),
-      fork: false
-    },
-    {
-      name: "convolingo",
-      description: "Low-latency machine translation API and speech-synthesis wrapper using Flask and NLP models.",
-      html_url: "https://github.com/jai-source",
-      stargazers_count: 5,
-      language: "Python",
-      updated_at: new Date().toISOString(),
-      fork: false
-    },
-    {
-      name: "thynkridge-planner",
-      description: "AI-assisted academic scheduler, calendar tracking system, and micro-milestone planner dashboard.",
-      html_url: "https://github.com/jai-source",
-      stargazers_count: 11,
-      language: "TypeScript",
-      updated_at: new Date().toISOString(),
-      fork: false
-    }
-  ];
 
   useEffect(() => {
     const fetchRepos = async () => {
@@ -71,14 +70,10 @@ export const GithubRepos: React.FC = () => {
           .sort((a, b) => b.stargazers_count - a.stargazers_count)
           .slice(0, 4);
 
-        if (filtered.length === 0) {
-          setRepos(fallbackRepos);
-        } else {
-          setRepos(filtered);
-        }
+        setRepos(filtered.length === 0 ? FALLBACK_REPOS : filtered);
       } catch (err) {
         console.warn("GitHub API error, using static fallback repos:", err);
-        setRepos(fallbackRepos);
+        setRepos(FALLBACK_REPOS);
         setError(true);
       } finally {
         setLoading(false);

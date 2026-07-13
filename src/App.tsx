@@ -12,6 +12,16 @@ import { FaGithub, FaLinkedinIn, FaBars, FaTimes } from 'react-icons/fa';
 import { FiActivity } from 'react-icons/fi';
 import logoImage from './assets/Logo/Logo2.png';
 
+const NAV_LINKS = [
+  { name: 'Home', href: '#hero', id: 'hero' },
+  { name: 'About', href: '#about', id: 'about' },
+  { name: 'Work', href: '#experience', id: 'experience' },
+  { name: 'Projects', href: '#projects', id: 'projects' },
+  { name: 'Skills', href: '#skills', id: 'skills' },
+  { name: 'Timeline', href: '#timeline', id: 'timeline' },
+  { name: 'Contact', href: '#contact', id: 'contact' },
+];
+
 const App: React.FC = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('hero');
@@ -24,22 +34,12 @@ const App: React.FC = () => {
     restDelta: 0.001
   });
 
-  const navLinks = [
-    { name: 'Home', href: '#hero', id: 'hero' },
-    { name: 'About', href: '#about', id: 'about' },
-    { name: 'Work', href: '#experience', id: 'experience' },
-    { name: 'Projects', href: '#projects', id: 'projects' },
-    { name: 'Skills', href: '#skills', id: 'skills' },
-    { name: 'Timeline', href: '#timeline', id: 'timeline' },
-    { name: 'Contact', href: '#contact', id: 'contact' },
-  ];
-
   // Intersect observer to highlight active links
   useEffect(() => {
     const handleScroll = () => {
       const scrollPos = window.scrollY + 200;
       
-      for (const link of navLinks) {
+      for (const link of NAV_LINKS) {
         const el = document.getElementById(link.id);
         if (el) {
           const top = el.offsetTop;
@@ -52,6 +52,7 @@ const App: React.FC = () => {
       }
     };
 
+    handleScroll();
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
@@ -81,7 +82,7 @@ const App: React.FC = () => {
 
         {/* Desktop Menu */}
         <nav className="hidden lg:flex items-center gap-1">
-          {navLinks.map((link) => (
+          {NAV_LINKS.map((link) => (
             <a
               key={link.href}
               href={link.href}
@@ -130,7 +131,7 @@ const App: React.FC = () => {
         className={`fixed inset-x-4 top-20 z-40 bg-[#1C1C1F] border-4 border-black rounded-brutal shadow-brutal-lg p-6 lg:hidden ${menuOpen ? 'block' : 'pointer-events-none'}`}
       >
         <nav className="flex flex-col gap-3 text-left">
-          {navLinks.map((link) => (
+          {NAV_LINKS.map((link) => (
             <a
               key={link.href}
               href={link.href}

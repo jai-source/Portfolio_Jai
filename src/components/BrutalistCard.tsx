@@ -14,6 +14,7 @@ interface BrutalistCardProps {
 export const BrutalistCard: React.FC<BrutalistCardProps> = ({
   children,
   className = '',
+  hoverRotate = 0,
   shadowColor = '#000000',
   shadowSize = 'normal',
   asymmetric = false,
@@ -47,6 +48,7 @@ export const BrutalistCard: React.FC<BrutalistCardProps> = ({
       }}
       whileHover={{
         y: -6,
+        rotate: hoverRotate,
         boxShadow: `${hoverShadow} ${shadowColor}`,
       }}
       transition={{
