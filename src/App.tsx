@@ -10,6 +10,7 @@ import { Timeline } from './sections/Timeline';
 import { Contact } from './sections/Contact';
 import { FaGithub, FaLinkedinIn, FaBars, FaTimes } from 'react-icons/fa';
 import { FiActivity } from 'react-icons/fi';
+import logoImage from './assets/Logo/Logo2.png';
 
 const App: React.FC = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -70,7 +71,11 @@ const App: React.FC = () => {
       <header className="fixed top-4 inset-x-4 z-40 max-w-7xl mx-auto flex items-center justify-between px-6 py-3 bg-[#1C1C1F]/90 backdrop-blur-md border-4 border-black rounded-brutal shadow-brutal transition-all duration-200">
         {/* Logo / Title */}
         <a href="#hero" className="font-grotesk font-black text-xl tracking-tighter flex items-center gap-1.5 hover:text-portfolio-secondary">
-          <span className="w-5 h-5 bg-portfolio-primary border-2 border-black inline-block rounded-sm brutal-shadow" style={{ boxShadow: '1.5px 1.5px 0px 0px #000000' }} />
+          <img
+            src={logoImage}
+            alt="Jai Ratna logo"
+            className="w-5 h-5 inline-block rounded-sm object-cover"
+          />
           JAI RATNA
         </a>
 
@@ -170,8 +175,15 @@ const App: React.FC = () => {
       <footer className="border-t-4 border-black bg-[#121214] py-12 px-6 relative z-10 text-stone-500">
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
           <div className="flex flex-col items-center md:items-start text-center md:text-left gap-1">
-            <span className="font-grotesk font-black text-white tracking-tighter text-lg">JAI RATNA</span>
-            <span className="text-xs font-semibold">Built with React + Vite · Delhi NCR</span>
+            <span className="font-grotesk font-black text-white tracking-tighter text-lg flex items-center gap-2">
+              <img
+                src={logoImage}
+                alt="Jai Ratna logo"
+                className="w-6 h-6 rounded-sm object-cover"
+              />
+              JAI RATNA
+            </span>
+            <span className="text-xs font-semibold"> · Delhi NCR</span>
           </div>
 
           <div className="flex items-center gap-2 border border-zinc-800 bg-[#1C1C1F] px-4 py-1.5 rounded-full text-xs font-bold text-stone-400 font-mono">
