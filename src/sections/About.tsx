@@ -38,24 +38,22 @@ export const About: React.FC = () => {
             About
           </span>
           <h2 className="text-[2rem] font-extrabold leading-tight tracking-tight text-white sm:text-4xl md:text-5xl">
-            Software engineer focused on building meaningful products. <br className="hidden md:block" />
-            <span className="text-portfolio-secondary">Curious enough to explore. Persistent enough to ship.</span>
+            Still learning. <br className="hidden md:block" />
+            <span className="text-portfolio-secondary">Still building.</span>
           </h2>
         </div>
 
         <div className="mb-10 grid grid-cols-1 items-start gap-4 sm:mb-14 sm:gap-6 md:mb-16 lg:grid-cols-12 lg:gap-8">
           <motion.div variants={itemVariants} className="space-y-4 text-left lg:col-span-6">
             <p className="text-[15px] font-medium leading-7 text-stone-300 sm:text-lg md:text-xl">
-              I'm a Computer Science student at Manipal University Jaipur and a Software Engineering Intern at WITS Innovation Labs. I enjoy building software that combines solid engineering with practical problem-solving.
+              I'm a Computer Science student at Manipal University Jaipur and currently a Software Engineering Intern at WITS Innovation Labs.
+              Over the past few years, I've spent most of my time outside the classroom building projects, trying new technologies, and learning how different parts of software fit together.
             </p>
             <p className="text-[15px] font-medium leading-7 text-stone-300 sm:text-lg md:text-xl">
-              Over the past few years I've built projects involving backend development, full-stack web applications, relational databases, and developer tools while experimenting with computer vision. Whether it's designing REST APIs, building applications that integrate modern AI tools, or building intuitive user experiences, I enjoy understanding how every layer of a system fits together.
+              Most of my recent work has been around backend development with Node.js, Express, Prisma, and PostgreSQL, while other projects have given me the chance to explore areas like computer vision and AI integrations. I'm still exploring what I enjoy the most, and every project teaches me something different.
             </p>
             <p className="text-[15px] font-medium leading-7 text-stone-300 sm:text-lg md:text-xl">
-              I believe great software isn't defined by the technology used. It's defined by how reliably it solves real problems. That's the mindset I bring to every project I build.
-            </p>
-            <p className="text-sm leading-7 text-stone-400 sm:text-base md:text-lg">
-              I enjoy building software and learning by creating real projects. Most of my recent work has been around backend development with Express, Prisma, and PostgreSQL, while my side projects have given me a chance to explore areas like computer vision. Every project teaches me something new, and that's what keeps me building.
+              The part I enjoy most is turning an idea into something people can actually use. Every project pushes me to learn something new, whether that's a technology I haven't used before or a problem I haven't solved yet.
             </p>
           </motion.div>
 
@@ -106,7 +104,7 @@ export const About: React.FC = () => {
           variants={itemVariants}
           className="rounded-brutal border-4 border-black bg-portfolio-card p-5 text-center font-grotesk text-base font-bold text-portfolio-text shadow-brutal sm:p-8 sm:text-xl md:text-2xl [text-wrap:balance]"
         >
-          "Build with curiosity. Engineer with purpose."
+          "Turns out debugging teaches more than tutorials ever could."
         </motion.div>
       </motion.div>
     </section>

@@ -57,14 +57,14 @@ export const Hero: React.FC = () => {
           >
             I'm <span className="relative inline-block text-portfolio-primary">Jai Ratna<span className="absolute bottom-1 left-0 h-3 w-full bg-portfolio-primary/20 -z-10" /></span>.
             <br />
-            <span className="text-white">I build software that solves real problems.</span>
+            <span className="text-white">I like building things and learning how they work.</span>
           </motion.h1>
 
           <motion.p
             variants={itemVariants}
             className="mb-6 max-w-2xl text-[15px] font-medium leading-7 text-stone-400 sm:mb-8 sm:text-lg md:text-xl"
           >
-            Software Engineering student passionate about building scalable applications, intelligent systems, and products people actually enjoy using. From backend APIs and full-stack web apps to computer vision projects like Percepta, I enjoy turning ideas into reliable software.
+            I'm a Computer Science student at Manipal University Jaipur, currently working as a Software Engineering Intern at WITS Innovation Labs. Most of what I've learned has come from building projects outside the classroom, making mistakes, fixing them, and slowly becoming a better engineer with every project.
           </motion.p>
 
           <motion.div

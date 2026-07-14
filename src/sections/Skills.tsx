@@ -3,6 +3,7 @@ import { DiJava } from 'react-icons/di';
 import { GoTerminal } from 'react-icons/go';
 import { motion } from 'framer-motion';
 import {
+  SiDart,
   SiDocker,
   SiExpress,
   SiGithub,
@@ -47,7 +48,8 @@ export const Skills: React.FC = () => {
         { name: 'Python', icon: <SiPython className="text-[#3776AB]" /> },
         { name: 'Java', icon: <DiJava className="text-lg text-[#007396]" /> },
         { name: 'SQL', icon: <VscDatabase className="text-stone-700" /> },
-        { name: 'C', icon: <GoTerminal className="text-stone-700" /> }
+        { name: 'C', icon: <GoTerminal className="text-stone-700" /> },
+        { name: 'Dart', icon: <SiDart className="text-stone-700" /> }
       ]
     },
     {
